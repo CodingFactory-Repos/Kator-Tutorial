@@ -9,7 +9,7 @@ fun main(args: Array<String>) {
 }
 
 fun Application.module() {
-    val homeSystem = HomeSystem()
+    val homeSystem = HomeSystem.getInstance()
 
     val light = Light()
     light.name = "Living room"
