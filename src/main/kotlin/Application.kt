@@ -11,14 +11,12 @@ fun main(args: Array<String>) {
 fun Application.module() {
     val homeSystem = HomeSystem()
 
-    // Add some test lights
-    homeSystem.addThing(
-            Light().apply {
-                name = "Living Room"
-                isOn = true
-            }
-    )
-    homeSystem.addThing(
+    val light = Light()
+    light.name = "Living room"
+    light.isOn = true
+    homeSystem.things.add(light)
+
+    homeSystem.things.add(
             Light().apply {
                 name = "Kitchen"
                 isOn = false
@@ -27,5 +25,5 @@ fun Application.module() {
 
     configureTemplating()
     configureMonitoring()
-    configureRouting()
+    configureRouting(homeSystem)
 }
