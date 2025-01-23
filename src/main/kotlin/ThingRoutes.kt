@@ -23,10 +23,12 @@ fun Route.thingById(homeSystem: HomeSystem) {
         }
 
         val action = call.parameters["action"]
-        if (action == "toggle") {
-            thing.isOn = !thing.isOn
-            call.respondRedirect("/things/$id")
-            return@get
+        when (action) {
+            "toggle" -> {
+                thing.isOn = !thing.isOn
+                call.respondRedirect("/things/$id")
+                return@get
+            }
         }
 
         val model = mapOf("id" to id, "light" to thing)
