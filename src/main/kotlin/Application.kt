@@ -13,10 +13,9 @@ fun Application.module() {
 
     val light = Light()
     light.name = "Living room"
-    light.isOn = true
-    homeSystem.things.add(light)
+    homeSystem.addThing(light)
 
-    homeSystem.things.add(
+    homeSystem.addThing(
             Light().apply {
                 name = "Kitchen"
                 isOn = false
