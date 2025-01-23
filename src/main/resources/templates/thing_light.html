@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Light Details</title>
+  </head>
+  <body>
+    <h1>{{ light.name }}</h1>
+    <p>Status: {{ light.isOn ? "ON" : "OFF" }}</p>
+    <a href="/things/{{ id }}?action=toggle">Toggle Light</a>
+    <p><a href="/">Back to list</a></p>
+  </body>
+</html>

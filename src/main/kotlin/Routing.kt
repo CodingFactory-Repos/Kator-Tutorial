@@ -17,6 +17,9 @@ fun Application.configureRouting(homeSystem: HomeSystem) {
 
             call.respond(PebbleContent("home.html", model))
         }
+
+        route("things") { thingById(homeSystem) }
+
         // Static plugin. Try to access `/static/index.html`
         staticResources("/static", "static")
     }
