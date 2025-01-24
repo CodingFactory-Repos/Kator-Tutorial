@@ -13,6 +13,13 @@ import org.slf4j.event.*
 fun Application.configureRouting(homeSystem: HomeSystem) {
     routing {
         get("/") {
+            val action = call.queryParameters["action"]
+            println(action)
+            when (action) {
+                "toggle_on" -> homeSystem.toggleLights(true)
+                "toggle_off" -> homeSystem.toggleLights(false)
+            }
+
             val model = mapOf("things" to homeSystem.things)
 
             call.respond(PebbleContent("home.html", model))

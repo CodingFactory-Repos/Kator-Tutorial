@@ -12,10 +12,18 @@ class HomeSystem private constructor() : OnLightChanged {
         }
     }
 
+    enum class State {
+        ON,
+        OFF
+    }
+
+    var state = State.OFF
+
     private val logs = mutableListOf<String>()
 
     val things = mutableListOf<Thing>()
-    val lights: List<Light> = things.filterIsInstance<Light>()
+    val lights: List<Light>
+        get() = things.filterIsInstance<Light>()
 
     fun addThing(thing: Thing) {
         things.add(thing)
@@ -33,5 +41,13 @@ class HomeSystem private constructor() : OnLightChanged {
         val message = "light changed. ${light.description}"
         println(message)
         logs.add(message)
+    }
+
+    fun toggleLights(isOn: Boolean) {
+        if (state != State.ON) {
+            return
+        }
+
+        lights.forEach { it.isOn = isOn }
     }
 }

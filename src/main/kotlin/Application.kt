@@ -10,6 +10,7 @@ fun main(args: Array<String>) {
 
 fun Application.module() {
     val homeSystem = HomeSystem.getInstance()
+    homeSystem.state = HomeSystem.State.ON
 
     val light = Light()
     light.name = "Living room"

@@ -9,6 +9,10 @@ class Light : Thing() {
 
     var isOn: Boolean = false
         set(value) {
+            if (reachable != State.REACHABLE) {
+                return
+            }
+
             field = value
             onLightChangedListener?.onLightSwitched(this)
         }
